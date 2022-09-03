@@ -179,12 +179,18 @@
         },
         methods: {
           logout() {
-            logoutApi().then((res)=>{
-              if(res.code === 1){
-                localStorage.removeItem('userInfo')
-                window.location.href = 'page/login/login.html'
-              }
+            this.$confirm("此操作将退出登录，是否继续？","提示",{type: "info"}).then(()=>{
+              logoutApi().then((res)=>{
+                if(res.code === 1){
+                  localStorage.removeItem('userInfo')
+                  window.location.href = 'page/login/login.html'
+                }
+              })
+            }).catch(()=>{
+              this.$message.error("已取消")
             })
+
+
           },
           goBack() {
             // window.location.href = 'javascript:history.go(-1)'
