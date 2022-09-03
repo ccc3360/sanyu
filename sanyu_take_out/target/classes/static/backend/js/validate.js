@@ -22,7 +22,13 @@ function checkUserName (rule, value, callback){
   } else if (value.length > 20 || value.length <3) {
     callback(new Error("账号长度应是3-20"))
   } else {
-    callback()
+    queryEmployeeByUsername(value).then(res =>{
+      if(String(res.code)==='1'){
+        callback()
+      }else{
+        callback(new Error(res.msg))
+      }
+    })
   }
 }
 

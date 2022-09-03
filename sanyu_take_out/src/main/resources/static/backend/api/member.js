@@ -40,3 +40,12 @@ function queryEmployeeById (id) {
     method: 'get'
   })
 }
+
+// 查重用户名
+function queryEmployeeByUsername (username) {
+  return $axios({
+    url: `/employee/check/${username}`,
+    method: 'get'
+  })
+}
+
