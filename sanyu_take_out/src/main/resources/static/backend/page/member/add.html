@@ -105,6 +105,7 @@
           return {
             id: '',
             actionType : '',
+            startname:'',
             ruleForm : {
                 'name': '',
                 'phone': '',
@@ -120,7 +121,8 @@
               //账号
               username: [
                 {
-                  required: true, 'validator': checkUserName, trigger: 'blur'
+                  required: true, 'validator': checkUserName, trigger: 'blur' , 'actionType':this.actionType
+                  ,'startname':this.startname
                 }
               ],
               //姓名
@@ -145,6 +147,7 @@
               console.log(res)
               if (String(res.code) === '1') {
                 console.log(res.data)
+                this.startname=res.data.username
                 this.ruleForm = res.data
                 this.ruleForm.sex = res.data.sex === '0' ? '女' : '男'
                 // this.ruleForm.password = ''

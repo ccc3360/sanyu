@@ -17,18 +17,36 @@ function isCellPhone (val) {
 
 //校验账号
 function checkUserName (rule, value, callback){
+  // console.log(rule.startname)
+  // console.log(value)
+
+  // console.log(rule)
+  // console.log(rule.actionType)
   if (value == "") {
     callback(new Error("请输入账号"))
   } else if (value.length > 20 || value.length <3) {
     callback(new Error("账号长度应是3-20"))
   } else {
-    queryEmployeeByUsername(value).then(res =>{
-      if(String(res.code)==='1'){
-        callback()
-      }else{
-        callback(new Error(res.msg))
-      }
-    })
+    if(rule.actionType==="add"){
+      queryEmployeeByUsername(value).then(res =>{
+        if(String(res.code)==='1'){
+          callback()
+        }else{
+          callback(new Error(res.msg))
+        }
+      })
+    }else if(rule.startname===value){
+      callback()
+    }else{
+      queryEmployeeByUsername(value).then(res =>{
+        if(String(res.code)==='1'){
+          callback()
+        }else{
+          callback(new Error(res.msg))
+        }
+      })
+    }
+
   }
 }
 

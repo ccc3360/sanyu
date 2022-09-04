@@ -2,6 +2,8 @@ package com.example.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -13,7 +15,11 @@ import java.time.LocalDateTime;
 public class Employee implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    /**
+     * 雪花算法生成的id为19位数字，long型，
+     * 页面中js处理long型数字只能去精确到前16位
+     */
+//    @JsonSerialize(using = ToStringSerializer.class)
     private Long id;
 
     private String username;
