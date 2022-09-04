@@ -35,9 +35,14 @@ public class Employee implements Serializable {
     private String idNumber;
 
     private Integer status;
-
+    /**
+     * @TableField
+     * 指定自动填充的策略
+     */
+    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
 
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
 
     @TableField(fill = FieldFill.INSERT)

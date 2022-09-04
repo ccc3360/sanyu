@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.common.R;
 import com.example.entity.Employee;
 import com.example.service.EmployeeService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.DigestUtils;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
-
+@Slf4j
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
@@ -73,12 +74,12 @@ public class EmployeeController {
 //        设置初始密码
         employee.setPassword(DigestUtils.md5DigestAsHex("123456".getBytes()));
 
-        employee.setCreateTime(LocalDateTime.now());
-        employee.setUpdateTime(LocalDateTime.now());
-
-        Long empid=(Long) request.getSession().getAttribute("employee");
-        employee.setCreateUser(empid);
-        employee.setUpdateUser(empid);
+//        employee.setCreateTime(LocalDateTime.now());
+//        employee.setUpdateTime(LocalDateTime.now());
+//
+//        Long empid=(Long) request.getSession().getAttribute("employee");
+//        employee.setCreateUser(empid);
+//        employee.setUpdateUser(empid);
 
         employeeService.save(employee);
         return R.success(null);
@@ -130,9 +131,11 @@ public class EmployeeController {
      */
     @PutMapping
     public R<String> update(HttpServletRequest request,@RequestBody Employee employee){
-        Long empid=(Long) request.getSession().getAttribute("employee");
-        employee.setUpdateUser(empid);
-        employee.setUpdateTime(LocalDateTime.now());
+        long id=Thread.currentThread().getId();
+        log.info("线程id为：{}",id);
+//        Long empid=(Long) request.getSession().getAttribute("employee");
+//        employee.setUpdateUser(empid);
+//        employee.setUpdateTime(LocalDateTime.now());
         employeeService.updateById(employee);
         return R.success("修改成功");
     }

@@ -17,8 +17,8 @@ function isCellPhone (val) {
 
 //校验账号
 function checkUserName (rule, value, callback){
-  console.log(rule.startname)
-  console.log(value)
+  // console.log(rule.startname)
+  // console.log(value)
 
   // console.log(rule)
   // console.log(rule.actionType)
