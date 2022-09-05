@@ -84,3 +84,34 @@ function validID (rule,value,callback) {
     callback(new Error('身份证号码不正确'))
   }
 }
+
+// //校验分类名
+// function checkCateName (rule, value, callback){
+//   console.log(value)
+//   console.log(rule.action)
+//   console.log(rule.startname)
+//   if (value == "") {
+//     callback(new Error("请输入分类名"))
+//   } else {
+//     if(rule.action==="add"){
+//       queryEmployeeByCatename(value).then(res =>{
+//         if(String(res.code)==='1'){
+//           callback()
+//         }else{
+//           callback(new Error(res.msg))
+//         }
+//       })
+//     }else if(rule.startname===value){
+//       callback()
+//     }else{
+//       queryEmployeeByCatename(value).then(res =>{
+//         if(String(res.code)==='1'){
+//           callback()
+//         }else{
+//           callback(new Error(res.msg))
+//         }
+//       })
+//     }
+//
+//   }
+// }

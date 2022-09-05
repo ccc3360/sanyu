@@ -98,7 +98,6 @@ public class EmployeeController {
         if(emp==null){
             return R.success(null);
         }
-        System.out.println("yicunzazi");
         return R.error("用户名已存在");
     }
 

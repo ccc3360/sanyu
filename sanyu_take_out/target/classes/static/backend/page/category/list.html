@@ -87,7 +87,7 @@
       </el-table>
       <el-pagination
         class="pageList"
-        :page-sizes="[10, 20, 30, 40]"
+        :page-sizes="[5,10, 20, 30, 40]"
         :page-size="pageSize"
         layout="total, sizes, prev, pager, next, jumper"
         :total="counts"
@@ -95,6 +95,7 @@
         @current-change="handleCurrentChange"
       ></el-pagination>
     </div>
+
     <el-dialog
       :title="classData.title"
       :visible.sync="classData.dialogVisible"
@@ -105,7 +106,7 @@
         class="demo-form-inline"
         label-width="100px"
       >
-        <el-form-item label="分类名称：">
+        <el-form-item label="分类名称：" >
           <el-input
             v-model="classData.name"
             placeholder="请输入分类名称"
@@ -147,6 +148,8 @@
     <script src="../../plugins/axios/axios.min.js"></script>
     <script src="../../js/request.js"></script>
     <script src="../../api/category.js"></script>
+     <script src="../../js/validate.js"></script>
+      <script src="../../js/index.js"></script>
     <script>
       new Vue({
         el: '#category-app',
@@ -164,10 +167,23 @@
               'categoryId': '',
               'name': '',
               sort: ''
-            }
+            },
+            // startname: ''
           }
         },
-        computed: {},
+        computed: {
+            // rules(){
+            //   return{
+            //     name: [{
+            //       required: true,
+            //       'validator': checkCateName,
+            //       trigger: 'blur',
+            //       'action': this.action,
+            //       'startname': this.startname
+            //     }]
+            //   }
+            // }
+        },
         created() {
           this.init()
         },
@@ -203,6 +219,7 @@
             this.classData.name = ''
             this.classData.sort = ''
             this.classData.dialogVisible = true
+            // this.startname=''
           },
           editHandle(dat) {
             this.classData.title = '修改分类'
@@ -211,6 +228,7 @@
             this.classData.sort = dat.sort
             this.classData.id = dat.id
             this.classData.dialogVisible = true
+            // this.startname=dat.name
           },
           // 关闭弹窗
           handleClose(st) {

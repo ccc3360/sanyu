@@ -25,4 +25,10 @@ public class GlobalExceptionHandler {
         exception.printStackTrace();
         return R.error("服务器故障，稍后再试");
     }
+
+    @ExceptionHandler(CustomException.class)
+    public R<String> exceptionHandler(CustomException ex){
+        log.info(ex.getMessage());
+        return R.error(ex.getMessage());
+    }
 }

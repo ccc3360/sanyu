@@ -41,3 +41,11 @@ const addCategory = (params) => {
     data: { ...params }
   })
 }
+
+// // 查重分类名
+// function queryEmployeeByCatename (name) {
+//   return $axios({
+//     url: `/category/${name}`,
+//     method: 'get'
+//   })
+// }

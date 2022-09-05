@@ -49,3 +49,11 @@ function queryEmployeeByUsername (username) {
   })
 }
 
+// 查重分类名
+function queryEmployeeByCatename (name) {
+  return $axios({
+    url: `/employee/check/${name}`,
+    method: 'get'
+  })
+}
+
