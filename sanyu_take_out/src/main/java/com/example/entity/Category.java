@@ -51,7 +51,7 @@ public class Category implements Serializable {
 
 
     //是否删除
-    @TableLogic(value = "1",delval = "0")
+    @TableLogic(value = "0",delval = "1")
     private Integer isDeleted;
 
 }
