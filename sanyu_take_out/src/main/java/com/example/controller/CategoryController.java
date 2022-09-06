@@ -41,7 +41,7 @@ public class CategoryController {
      */
     @GetMapping("/page")
     public R<Page> page(Integer page,Integer pageSize){
-        Page<Category> pageInfo=new Page<>();
+        Page<Category> pageInfo=new Page<>(page,pageSize);
         LambdaQueryWrapper<Category> queryWrapper=new LambdaQueryWrapper<>();
         queryWrapper.orderByAsc(Category::getSort);
         categoryService.page(pageInfo,queryWrapper);

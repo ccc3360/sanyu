@@ -267,16 +267,16 @@
         width="60%"
         :before-close="handleClose"
       >
-        <el-input
-          v-model="value"
-          class="seachDish"
-          placeholder="请输入菜品名称进行搜索"
-          style="width: 250px"
-          size="small"
-          clearable
-        >
-          <i slot="prefix" class="el-input__icon el-icon-search" style="cursor: pointer" @click="seachHandle"></i>
-        </el-input>
+<!--        <el-input-->
+<!--          v-model="value"-->
+<!--          class="seachDish"-->
+<!--          placeholder="请输入菜品名称进行搜索"-->
+<!--          style="width: 250px"-->
+<!--          size="small"-->
+<!--          clearable-->
+<!--        >-->
+<!--          <i slot="prefix" class="el-input__icon el-icon-search" style="cursor: pointer" @click="seachHandle"></i>-->
+<!--        </el-input>-->
         <!-- <AddDish ref="adddish" :check-list="checkList" :seach-key="seachKey" @checkList="getCheckList" /> -->
         
         <div class="addDishCon">
@@ -672,7 +672,7 @@
 
           // 关键词收搜菜品列表分类
           getDishForName (name) {
-            queryDishList({name}).then(res => {
+            queryDishList(name).then(res => {
               if (res.code === 1) {
                 let newArr = res.data
                 newArr.forEach((n) => {
