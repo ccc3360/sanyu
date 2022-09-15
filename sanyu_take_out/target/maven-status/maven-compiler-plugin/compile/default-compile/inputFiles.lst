@@ -11,6 +11,9 @@ D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\common
 D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\common\MyMetaObjectHandler.java
 D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\service\impl\DishServiceImpl.java
 D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\service\impl\EmployeeServiceImpl.java
+D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\controller\SetmealController.java
+D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\entity\SetmealDish.java
+D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\dto\SetmealDto.java
 D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\service\CategoryService.java
 D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\filter\LoginCheckFilter.java
 D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\entity\Dish.java
@@ -23,12 +26,15 @@ D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\dto\Di
 D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\SanyuApplication.java
 D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\common\R.java
 D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\mapper\DishMapper.java
+D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\service\SetmealDishService.java
 D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\controller\CategoryController.java
 D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\entity\Category.java
 D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\service\EmployeeService.java
+D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\mapper\SetmealDishMapper.java
 D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\service\impl\CategoryServiceImpl.java
 D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\service\SetmealService.java
 D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\common\JacksonObjectMapper.java
+D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\service\impl\SetmealDishServiceImpl.java
 D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\mapper\SetmealMapper.java
 D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\mapper\EmployeeMapper.java
 D:\IdeaProjects\Project exercise\sanyu_take_out\src\main\java\com\example\controller\DishController.java

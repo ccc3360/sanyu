@@ -4,8 +4,10 @@
   align-items: center;
   height: 100%;
   background-color: #333;
+  position: relative;
 }
 .login-box {
+  position: absolute;
   width: 1000px;
   height: 474.38px;
   border-radius: 8px;
@@ -23,7 +25,7 @@
   color: #707070;
 }
 .login-form {
-  background: #ffffff;
+  background-color: rgba(0,0,0,0.5);
   width: 40%;
   border-radius: 0px 8px 8px 0px;
   display: flex;
