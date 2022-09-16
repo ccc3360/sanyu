@@ -8,6 +8,7 @@ import com.example.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/user")
@@ -22,6 +24,8 @@ import java.util.Map;
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
     @PostMapping("/sendMsg")
     public R<String> sendMsg(@RequestBody User user, HttpSession session){
 //        获取手机号
@@ -32,7 +36,8 @@ public class UserController {
             log.info("code={}",code);
 //        调用阿里云提供的短信服务api完成发送短信
 //        将生成的验证码存到session
-            session.setAttribute(phone,code);
+//            session.setAttribute(phone,code);
+            stringRedisTemplate.opsForValue().set(phone,code,5, TimeUnit.MINUTES);
             return R.success("");
         }
         return R.error("");
@@ -44,7 +49,8 @@ public class UserController {
         String phone=map.get("phone").toString();
         String code=map.get("code").toString();
         System.out.println(phone+code);
-        Object codeInSession = session.getAttribute(phone);
+//        Object codeInSession = session.getAttribute(phone);
+        Object codeInSession = stringRedisTemplate.opsForValue().get(phone);
         System.out.println(codeInSession);
         if(codeInSession!=null&&codeInSession.equals(code)){
             LambdaQueryWrapper<User> queryWrapper=new LambdaQueryWrapper<>();
@@ -57,6 +63,7 @@ public class UserController {
                 userService.save(one);
             }
             session.setAttribute("user",one.getId());
+            stringRedisTemplate.delete(phone);
             return R.success(one);
         }
         return R.error("");
