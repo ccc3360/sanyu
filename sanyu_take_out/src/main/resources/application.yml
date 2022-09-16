@@ -1,6 +1,11 @@
 server:
   port: 81
 spring:
+  redis:
+    host: 192.168.147.100
+    port: 6379
+    password: root@111111
+    database: 0
   datasource:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
