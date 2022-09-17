@@ -28,7 +28,7 @@ public class SetmealController {
     @Autowired
     private SetmealService setmealService;
     @Autowired
-    private CategoryService categorySesprvice;
+    private CategoryService categoryService;
     @PostMapping
     @CacheEvict(value = "setmealCache",allEntries = true)//每次新增套餐，删除所有套餐缓存
     public R<String> insert(@RequestBody SetmealDto setmealDto){
