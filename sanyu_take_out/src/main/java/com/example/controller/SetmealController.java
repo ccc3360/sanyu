@@ -13,6 +13,8 @@ import com.example.service.SetmealService;
 import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,8 +28,9 @@ public class SetmealController {
     @Autowired
     private SetmealService setmealService;
     @Autowired
-    private CategoryService categoryService;
+    private CategoryService categorySesprvice;
     @PostMapping
+    @CacheEvict(value = "setmealCache",allEntries = true)//每次新增套餐，删除所有套餐缓存
     public R<String> insert(@RequestBody SetmealDto setmealDto){
         setmealService.saveWithDish(setmealDto);
         return R.success("");
@@ -90,6 +93,7 @@ public class SetmealController {
     }
 
     @DeleteMapping
+    @CacheEvict(value = "setmealCache",allEntries = true)//每次删除套餐，删除所有套餐缓存
     public R<String> delete(String ids){
         String[] idList=ids.split(",");
         for(String id: idList){
@@ -103,6 +107,7 @@ public class SetmealController {
     }
 
     @GetMapping("/list")
+    @Cacheable(value = "setmealCache",key = "#setmeal.categoryId+'_'+#setmeal.status")
     public R<List<Setmeal>> list(Setmeal setmeal){
         LambdaQueryWrapper<Setmeal> queryWrapper=new LambdaQueryWrapper<>();
         queryWrapper.eq(Setmeal::getCategoryId,setmeal.getCategoryId())
