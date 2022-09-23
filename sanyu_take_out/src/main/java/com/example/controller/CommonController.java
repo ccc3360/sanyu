@@ -52,7 +52,8 @@ public class CommonController {
             ApplicationHome h = new ApplicationHome(getClass());
             File jarF = h.getSource();
             String dirPath = jarF.getParentFile().toString()+"/upload/";
-            log.error(dirPath);
+//            log.error(dirPath);
+            System.out.println(dirPath);
             FileInputStream fileInputStream=new FileInputStream(new File(dirPath+name));
             ServletOutputStream outputStream=response.getOutputStream();
             int len=0;
